@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/honmanyau/front-end-puzzles/issues"
   },
-  "homepage": "https://github.com/honmanyau/front-end-puzzles#readme"
+  "homepage": "https://github.com/honmanyau/front-end-puzzles#readme",
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  }
 }
