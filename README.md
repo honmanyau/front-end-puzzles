@@ -20,4 +20,6 @@ Most of the puzzles are self-contained and are designed to emulate practical fro
 
 ## License
 
-MIT
+[MIT](https://github.com/honmanyau/front-end-puzzles/blob/master/LICENSE.md)
+
+Attribution not necessary but would be very much appreciated. (\*´－｀\*)ﾉ
