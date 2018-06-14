@@ -25,6 +25,7 @@
   "homepage": "https://github.com/honmanyau/front-end-puzzles#readme",
   "devDependencies": {
     "mocha": "^5.2.0",
+    "tslint": "^5.10.0",
     "typescript": "^2.9.2"
   }
 }
