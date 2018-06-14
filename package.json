@@ -1,0 +1,26 @@
+{
+  "name": "front-end-puzzles",
+  "version": "0.1.0",
+  "description": "A collection of front-end development puzzles.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/honmanyau/front-end-puzzles.git"
+  },
+  "keywords": [
+    "front-end",
+    "development",
+    "web",
+    "development",
+    "puzzles"
+  ],
+  "author": "Honman Yau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/honmanyau/front-end-puzzles/issues"
+  },
+  "homepage": "https://github.com/honmanyau/front-end-puzzles#readme"
+}
