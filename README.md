@@ -10,9 +10,20 @@ Most of the puzzles are self-contained and are designed to emulate practical fro
 
 ## Table of Contents
 
+* [Installation](#installation)
 * [Puzzles](#puzzles)
 * [Contributing](#contributing)
 * [License](#license)
+
+## Installation
+
+```sh
+git clone https://github.com/honmanyau/front-end-puzzles
+cd front-end-puzzles
+
+# Install dependencies for development
+npm install
+```
 
 ## Puzzles
 
