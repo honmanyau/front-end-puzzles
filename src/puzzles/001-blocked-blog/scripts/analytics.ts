@@ -1,8 +1,12 @@
-function checkId(id) {
+function checkId(id: string) {
   return id === '1024some2048api4096key';
 }
 
-function initialiseAnalytics(id, callback) {
+interface ICallbackArg {
+  init: () => void;
+}
+
+function initialiseAnalytics(id: string, callback: ({}: ICallbackArg) => void) {
   let idIsValid = checkId(id);
 
   if (idIsValid) {
@@ -36,8 +40,6 @@ function initialiseAnalytics(id, callback) {
   }
 }
 
-console.log(document.body);
 initialiseAnalytics('1024some2048api4096key', function(analyticsApi) {
   analyticsApi.init();
 });
-console.log(document.body);
