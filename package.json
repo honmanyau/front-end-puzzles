@@ -4,7 +4,8 @@
   "description": "A collection of front-end development puzzles.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./src/**/*.js"
+    "test": "mocha ./src/**/*.js",
+    "nyanpasu": "node ./scripts/copy-templates.js"
   },
   "repository": {
     "type": "git",
