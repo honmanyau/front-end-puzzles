@@ -24,8 +24,11 @@ While the puzzles are intended to be as accurate as possible, please keep in min
 git clone https://github.com/honmanyau/front-end-puzzles
 cd front-end-puzzles
 
-# Install dependencies for development
+# Install dependencies
 npm install
+
+# Start Node.js server (not required for all puzzles)
+npm run fepserver
 ```
 
 ## Puzzles
