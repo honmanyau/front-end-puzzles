@@ -16,7 +16,7 @@ This repository contains a collection of puzzles that I created for exploring an
 
 Most of the puzzles are designed to simulate practical front-end development problems that require solid knowledge in HTML, CSS and/or JavaScript to solve. The story-like descriptions, where applicable, are purely intended for setting an atmosphere and do not include information required to solve the puzzles.
 
-While the puzzles are intended to be as accurate as possible, please keep in mind that they are simulations and the puzzles are written as I learn; as such, it is inevitable that there are puzzles that leave you with an impression of much to be desired. Any issues raised constructively will be very much appreciated!
+While the puzzles are intended to be as accurate as possible, please keep in mind that they are simulations and the puzzles are written as I learn; as such, there may be puzzles that will leave you an impression of much to be desired. Any issues raised constructively will be very much appreciated (see [Contributing](https://github.com/honmanyau/front-end-puzzles/blob/master/CONTRIBUTING.md))!
 
 ## Installation
 
@@ -37,7 +37,7 @@ npm run fepserver
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/honmanyau/front-end-puzzles/blob/master/CONTRIBUTING.md).
+Please see [Contributing](https://github.com/honmanyau/front-end-puzzles/blob/master/CONTRIBUTING.md).
 
 ## License
 
