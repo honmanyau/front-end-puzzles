@@ -1,45 +1,9 @@
-function checkId(id: string) {
-  return id === '1024some2048api4096key';
-}
+(function() {
+  let init = window.performance.now();
 
-interface ICallbackArg {
-  init: () => void;
-}
-
-function initialiseAnalytics(id: string, callback: ({}: ICallbackArg) => void) {
-  let idIsValid = checkId(id);
-
-  if (idIsValid) {
-    // Simulate delays
-    (function downloadDelay() {
-      let init = window.performance.now();
-
-      while (window.performance.now() - init < 5000) {
-        // Do nothing and block the thread for 5 seconds.
-      }
-    })();
-
-    (function executeDelay() {
-      let init = window.performance.now();
-
-      while (window.performance.now() - init < 1000) {
-        // Do nothing and block the thread for 1 seconds.
-      }
-    })();
-
-    let analyticsApi = {
-      init: function init() {
-        // Does things!
-      }
-    };
-
-    callback(analyticsApi);
+  while (window.performance.now() - init < 1500) {
+    // Block the thread for way too long because this is a terrible analytics
+    // company that is only interested in money and is unable to hire
+    // decent developers
   }
-  else {
-    throw 'TypeError: NetworkError when attempting to fetch resource.';
-  }
-}
-
-initialiseAnalytics('1024some2048api4096key', function(analyticsApi) {
-  analyticsApi.init();
-});
+})();
