@@ -24,8 +24,7 @@ app.get('/puzzle/:id/:filename', function (request, response) {
             throw error;
         }
         var config = JSON.parse(data);
-        var delay = config[filename].delay;
-        console.log(delay);
+        var delay = (config[filename] || 0).delay;
         setTimeout(function () {
             response.sendFile(resourcePath);
         }, delay);
