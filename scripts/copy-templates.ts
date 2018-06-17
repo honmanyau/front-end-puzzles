@@ -16,10 +16,8 @@ function makeDirectory(title: string) {
   return promise;
 }
 
-function getListOfTemplates() {
+function getListOfFilesInDirectory(path: string) {
   let promise = new Promise(function(resolve, reject)  {
-    let path = __dirname.replace(/scripts$/, 'src/templates');
-
     fs.readdir(path, function(error: Error, filenames: string[]) {
       if (error) {
         reject(error);
@@ -32,15 +30,30 @@ function getListOfTemplates() {
   return promise;
 }
 
-function copyTemplates(title: string, files: string[]): Promise<{}>[] {
-  let promises = files.map(function(file) {
-    let source = __dirname.replace(/scripts$/, 'src/templates') + `/${file}`;
-    let destination = __dirname.replace(/scripts$/, `src/puzzles/${title}/${file}`);
-
+function copyTemplates(
+  title: string, files: string[], sourceDir: string, destinationDir: string
+): Promise<{}>[] {
+  let promises = files.map(function(name) {
     return new Promise(function(resolve, reject) {
-      fs.copyFile(source, destination, fs.constants.COPYFILE_EXCL, function(error: Error) {
+      let source = `${sourceDir}/${name}`;
+      let destination = `${destinationDir}/${name}`;
+      let mode = fs.constants.COPYFILE_EXCL;
+
+      fs.copyFile(source, destination, mode,function(error: Error) {
         if (error) {
           reject(error);
+        }
+
+        // Check if the current path is a directory
+        let isDirectory = !name.match(/\./);
+
+        if (isDirectory) {
+          let promise = getListOfFilesInDirectory(source);
+
+          promise
+            .then(function(subfiles) {
+              copyTemplates(title, subfiles as string[], source, destination);
+            });
         }
 
         resolve({ success: true, destination });
@@ -70,13 +83,16 @@ let title = process.argv.slice(2).join(' ');
 let titleNotEmpty = !!title.replace(/\s/g, '');
 
 if (titleNotEmpty) {
+  let dir = __dirname.replace(/scripts$/, 'src/templates');
   let promise1 = makeDirectory(title);
-  let promise2 = getListOfTemplates();
+  let promise2 = getListOfFilesInDirectory(dir);
 
   Promise.all([promise1, promise2])
     .then(function(response) {
       let files = response[1] as string[];
-      let promises = copyTemplates(title, files);
+      let source = __dirname.replace(/scripts$/, 'src/templates');
+      let destination = __dirname.replace(/scripts$/, `src/puzzles/${title}`);
+      let promises = copyTemplates(title, files, source, destination);
 
       Promise.all(promises)
         .then(function(response) {
@@ -88,5 +104,5 @@ if (titleNotEmpty) {
     });
 }
 else {
-
+  // Error handling to be implemented.
 }

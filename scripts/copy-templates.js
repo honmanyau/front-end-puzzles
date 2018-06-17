@@ -20,9 +20,8 @@ function makeDirectory(title) {
     });
     return promise;
 }
-function getListOfTemplates() {
+function getListOfFilesInDirectory(path) {
     var promise = new Promise(function (resolve, reject) {
-        var path = __dirname.replace(/scripts$/, 'src/templates');
         fs.readdir(path, function (error, filenames) {
             if (error) {
                 reject(error);
@@ -32,14 +31,24 @@ function getListOfTemplates() {
     });
     return promise;
 }
-function copyTemplates(title, files) {
-    var promises = files.map(function (file) {
-        var source = __dirname.replace(/scripts$/, 'src/templates') + ("/" + file);
-        var destination = __dirname.replace(/scripts$/, "src/puzzles/" + title + "/" + file);
+function copyTemplates(title, files, sourceDir, destinationDir) {
+    var promises = files.map(function (name) {
         return new Promise(function (resolve, reject) {
-            fs.copyFile(source, destination, fs.constants.COPYFILE_EXCL, function (error) {
+            var source = sourceDir + "/" + name;
+            var destination = destinationDir + "/" + name;
+            var mode = fs.constants.COPYFILE_EXCL;
+            fs.copyFile(source, destination, mode, function (error) {
                 if (error) {
                     reject(error);
+                }
+                // Check if the current path is a directory
+                var isDirectory = !name.match(/\./);
+                if (isDirectory) {
+                    var promise = getListOfFilesInDirectory(source);
+                    promise
+                        .then(function (subfiles) {
+                        copyTemplates(title, subfiles, source, destination);
+                    });
                 }
                 resolve({ success: true, destination: destination });
             });
@@ -63,12 +72,15 @@ var init = process.hrtime();
 var title = process.argv.slice(2).join(' ');
 var titleNotEmpty = !!title.replace(/\s/g, '');
 if (titleNotEmpty) {
+    var dir = __dirname.replace(/scripts$/, 'src/templates');
     var promise1 = makeDirectory(title);
-    var promise2 = getListOfTemplates();
+    var promise2 = getListOfFilesInDirectory(dir);
     Promise.all([promise1, promise2])
         .then(function (response) {
         var files = response[1];
-        var promises = copyTemplates(title, files);
+        var source = __dirname.replace(/scripts$/, 'src/templates');
+        var destination = __dirname.replace(/scripts$/, "src/puzzles/" + title);
+        var promises = copyTemplates(title, files, source, destination);
         Promise.all(promises)
             .then(function (response) {
             var final = process.hrtime(init);
@@ -78,4 +90,5 @@ if (titleNotEmpty) {
     });
 }
 else {
+    // Error handling to be implemented.
 }
