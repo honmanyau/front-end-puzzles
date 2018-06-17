@@ -17,9 +17,9 @@ Nadeshiko is an aspiring front-end developer who loves tinkering with everything
     ```sh
       npm run fpeserver
     ```
-
+2. Open `index.html` and note/measure the Time to First Render (TTFR)
 2. Identify and describe the problem
-3. Reduce the Time to First Render (TTFR) to less than 4 seconds
+3. Reduce the TTFR to less than 4 seconds
 
 ## Constraints
 
