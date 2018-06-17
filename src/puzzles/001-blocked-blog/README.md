@@ -2,12 +2,6 @@
 
 Nadeshiko is an aspiring front-end developer who loves tinkering with everything front-end. One day, while she is casually browsing the Internet for interesting front-end things, she comes across a very simple blog, with no images, that somehow takes forever and a half to load. The curious Nadeshiko is able to reproduce the inexplicably long loading time with various browsers, but she has not learnt enough to identify the problem. Can you help Nadeshiko figure out the cause of the problem and implement a solution?
 
-## Table of Contents
-
-* [Instructions](#instructions)
-* [Requirements](#requirement)
-* [Constraints](#constraints)
-
 ## Instructions
 
 1. Start the front-end puzzle server and check that it is listening on port 3001:
