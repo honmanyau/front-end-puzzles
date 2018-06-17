@@ -14,7 +14,7 @@
 
 This repository contains a collection of puzzles that I created for exploring and practising front-end development techniques. The motivation for creating these puzzles is because I have been thinking about them for a while, and something  ~~like not passing a front-end development interview~~ gave me that final push.
 
-Most of the puzzles are designed to simulate practical front-end development problems that require solid knowledge in HTML, CSS and/or JavaScript to solve. The story-like descriptions, where applicable, are purely intended for setting an atmosphere and do not include information required to solve the puzzles.
+Most of the puzzles are designed to simulate practical front-end development problems that require solid knowledge in HTML, CSS and/or JavaScript to solve. The story-like descriptions, where applicable, are purely intended for setting an atmosphere and do not include information required to solve the puzzles. Many of the puzzles are also open-ended and have multiple solutions; in such cases, it is up to you to consider the advantages and disadvantages of various methods.
 
 While the puzzles are intended to be as accurate as possible, please keep in mind that they are simulations and the puzzles are written as I learn; as such, there may be puzzles that will leave you an impression of much to be desired. Any issues raised constructively will be very much appreciated (see [Contributing](https://github.com/honmanyau/front-end-puzzles/blob/master/CONTRIBUTING.md))!
 
