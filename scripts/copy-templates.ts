@@ -31,7 +31,7 @@ function getListOfFilesInDirectory(path: string) {
 }
 
 function copyTemplates(
-  title: string, files: string[], sourceDir: string, destinationDir: string
+  files: string[], sourceDir: string, destinationDir: string
 ): Promise<{}>[] {
   let promises = files.map(function(name) {
     return new Promise(function(resolve, reject) {
@@ -52,7 +52,7 @@ function copyTemplates(
 
           promise
             .then(function(subfiles) {
-              copyTemplates(title, subfiles as string[], source, destination);
+              copyTemplates(subfiles as string[], source, destination);
             });
         }
 
@@ -83,16 +83,23 @@ let title = process.argv.slice(2).join(' ');
 let titleNotEmpty = !!title.replace(/\s/g, '');
 
 if (titleNotEmpty) {
+  let puzzleDir = __dirname.replace(/scripts$/, 'src/puzzles');
+  let existingPuzzles = fs.readdirSync(puzzleDir).filter(function(name) {
+    return name.match(/^\d\d\d-/);
+  }).length;
+  let prefix = ('00' + existingPuzzles + 1).slice(-3) + '-';
+  let slug = prefix + title.toLowerCase().replace(' ', '-');
+
   let dir = __dirname.replace(/scripts$/, 'src/templates');
-  let promise1 = makeDirectory(title);
+  let promise1 = makeDirectory(slug);
   let promise2 = getListOfFilesInDirectory(dir);
 
   Promise.all([promise1, promise2])
     .then(function(response) {
       let files = response[1] as string[];
       let source = __dirname.replace(/scripts$/, 'src/templates');
-      let destination = __dirname.replace(/scripts$/, `src/puzzles/${title}`);
-      let promises = copyTemplates(title, files, source, destination);
+      let destination = __dirname.replace(/scripts$/, `src/puzzles/${slug}`);
+      let promises = copyTemplates(files, source, destination);
 
       Promise.all(promises)
         .then(function(response) {

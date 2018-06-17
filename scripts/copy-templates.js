@@ -31,7 +31,7 @@ function getListOfFilesInDirectory(path) {
     });
     return promise;
 }
-function copyTemplates(title, files, sourceDir, destinationDir) {
+function copyTemplates(files, sourceDir, destinationDir) {
     var promises = files.map(function (name) {
         return new Promise(function (resolve, reject) {
             var source = sourceDir + "/" + name;
@@ -47,7 +47,7 @@ function copyTemplates(title, files, sourceDir, destinationDir) {
                     var promise = getListOfFilesInDirectory(source);
                     promise
                         .then(function (subfiles) {
-                        copyTemplates(title, subfiles, source, destination);
+                        copyTemplates(subfiles, source, destination);
                     });
                 }
                 resolve({ success: true, destination: destination });
@@ -72,15 +72,21 @@ var init = process.hrtime();
 var title = process.argv.slice(2).join(' ');
 var titleNotEmpty = !!title.replace(/\s/g, '');
 if (titleNotEmpty) {
+    var puzzleDir = __dirname.replace(/scripts$/, 'src/puzzles');
+    var existingPuzzles = fs.readdirSync(puzzleDir).filter(function (name) {
+        return name.match(/^\d\d\d-/);
+    }).length;
+    var prefix = ('00' + existingPuzzles + 1).slice(-3) + '-';
+    var slug_1 = prefix + title.toLowerCase().replace(' ', '-');
     var dir = __dirname.replace(/scripts$/, 'src/templates');
-    var promise1 = makeDirectory(title);
+    var promise1 = makeDirectory(slug_1);
     var promise2 = getListOfFilesInDirectory(dir);
     Promise.all([promise1, promise2])
         .then(function (response) {
         var files = response[1];
         var source = __dirname.replace(/scripts$/, 'src/templates');
-        var destination = __dirname.replace(/scripts$/, "src/puzzles/" + title);
-        var promises = copyTemplates(title, files, source, destination);
+        var destination = __dirname.replace(/scripts$/, "src/puzzles/" + slug_1);
+        var promises = copyTemplates(files, source, destination);
         Promise.all(promises)
             .then(function (response) {
             var final = process.hrtime(init);
