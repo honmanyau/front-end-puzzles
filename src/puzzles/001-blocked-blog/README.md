@@ -14,7 +14,7 @@ Nadeshiko is an aspiring front-end developer who loves tinkering with everything
 ## Requirements
 
 * Identify and describe the problem
-* Reduce the TTFR to less than 4 seconds
+* Reduce the TTFR to less than 3.5 seconds
 
 ## Constraints
 
