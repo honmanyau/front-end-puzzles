@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha ./src/**/*.js",
     "nyanpasu": "node ./scripts/copy-templates.js",
-    "fpeserver": "node ./src/puzzles/server/server.js"
+    "fepserver": "node ./src/puzzles/server/server.js"
   },
   "repository": {
     "type": "git",
