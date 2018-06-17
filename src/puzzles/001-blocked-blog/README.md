@@ -13,10 +13,10 @@ Nadeshiko is an aspiring front-end developer who loves tinkering with everything
 
 ## Requirements
 
+* Make sure that resources are not cached
 * Identify and describe the problem
 * Reduce the TTFR to less than 3.5 seconds
 
 ## Constraints
 
-* Do not inspect or modify the content of any JavaScript files in this puzzle
-* Make sure that resources are not cached
+* Do not inspect or modify the content of anything in the `server` subdirectory
