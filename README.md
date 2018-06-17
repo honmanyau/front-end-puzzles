@@ -37,6 +37,8 @@ npm run fepserver
 
 ## Contributing
 
+Please see [CONTRIBUTING](https://github.com/honmanyau/front-end-puzzles/blob/master/CONTRIBUTING.md).
+
 ## License
 
 [MIT](https://github.com/honmanyau/front-end-puzzles/blob/master/LICENSE.md)
