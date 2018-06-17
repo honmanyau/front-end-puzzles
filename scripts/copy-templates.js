@@ -76,7 +76,7 @@ if (titleNotEmpty) {
     var existingPuzzles = fs.readdirSync(puzzleDir).filter(function (name) {
         return name.match(/^\d\d\d-/);
     }).length;
-    var prefix = ('00' + existingPuzzles + 1).slice(-3) + '-';
+    var prefix = ('00' + (existingPuzzles + 1)).slice(-3) + '-';
     var slug_1 = prefix + title.toLowerCase().replace(' ', '-');
     var dir = __dirname.replace(/scripts$/, 'src/templates');
     var promise1 = makeDirectory(slug_1);
