@@ -1,14 +1,27 @@
+import * as fs from 'fs';
 import express from 'express';
 
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.get('/puzzle/:id/:resource', function(request, response) {
-  let { id, resource } = request.params;
-  let parentDir = __dirname.replace(/server$/, '');
-  let path = `${parentDir}/${id}/server/${resource}`;
+app.get('/puzzle/:id/:filename', function(request, response) {
+  let { id, filename } = request.params;
+  let puzzleServerDir = `${__dirname.replace(/server$/, '')}/${id}/server`;
+  let configPath = `${puzzleServerDir}/fepconfig.json`;
+  let resourcePath = `${puzzleServerDir}/${filename}`;
 
-  response.sendFile(path);
+  fs.readFile(configPath, { encoding: 'utf8' }, function(error, data) {
+    if (error) {
+      throw error;
+    }
+
+    let config = JSON.parse(data);
+    let { delay } = config[filename] || 0;
+
+    setTimeout(function() {
+      response.sendFile(resourcePath);
+    }, delay);
+  });
 });
 
 // Start server
