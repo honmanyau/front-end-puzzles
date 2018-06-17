@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ./src/**/*.js",
-    "nyanpasu": "node ./scripts/copy-templates.js"
+    "nyanpasu": "node ./scripts/copy-templates.js",
+    "fpeserver": "node ./src/puzzles/server/server.js"
   },
   "repository": {
     "type": "git",
