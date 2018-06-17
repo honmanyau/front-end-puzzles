@@ -11,6 +11,7 @@ Puzzle suggestion is also welcomed and due attributions will be made if accepted
 * [Creating Puzzles](#creating-puzzles)
   * [Directory Naming Convention](#directory-naming-convention)
   * [Templates](#templates)
+  * [Simulating Network Requests](#simulating-network-requests)
 
 ## Creating Puzzles
 
@@ -38,3 +39,41 @@ npm run nyanpasu "Amazing Puzzle"
 ```
 
 Suppose there are already 10 puzzles before the script above is run, the directory created for the new puzzle will have a name of `011-amazing-puzzle`.
+
+### Simulating Network Requests
+
+Simulated network requests are handled by a local Node.js server as defined in `./src/server/server.js`. In order to keep files organised and all contained in a puzzle's directory, the server is designed to serve files from the `server` directory for a given puzzle. For example, consider the following `<script>` element in Puzzle 1:
+
+```html
+<script src="http://localhost:3001/puzzle/001-blocked-blog/analytics.js"></script>
+```
+
+That steps involved to make the Node.js server serve this particular file are:
+
+1. Create `analytics.ts` in the `001-blocked-blog/server` directory
+2. Transpile `analytics.ts` to give `analytics.js`
+3. That's it!
+
+The general URL format for accessing a file is:
+
+```
+http://localhost:3001/puzzle/:id/:filename
+```
+
+Where `id` and `filename` correspond to the directory name and filename, respectively, of a given puzzle.
+
+When a file is requested, the server first check `fepconfig.json` in the puzzle's `server` directory to see if a delay is specified for a given file. For example, in Puzzle 1 a delay of 4000 ms and 2000 ms are specified for `analytics.js` and `spiffyicons.js`, respectively, as follows:
+
+
+```json
+{
+  "analytics.js": {
+    "delay": 4000
+  },
+  "spiffyicons.js": {
+    "delay": 2000
+  }
+}
+```
+
+If a delayed is not set, then the default of `0` is used.
