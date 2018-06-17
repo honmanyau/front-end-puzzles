@@ -1,14 +1,12 @@
 # Puzzle 1—Blocked Blog
 
+Nadeshiko is an aspiring front-end developer who loves tinkering with everything front-end. One day, while she is casually browsing the Internet for interesting front-end things, she comes across a very simple blog, with no images, that somehow takes forever and a half to load. The curious Nadeshiko is able to reproduce the inexplicably long loading time with various browsers, but she has not learnt enough to identify the problem. Can you help Nadeshiko figure out the cause of the problem and implement a solution?
+
 ## Table of Contents
 
-* [Description](#puzzle-description)
 * [Instructions](#instructions)
+* [Requirements](#requirement)
 * [Constraints](#constraints)
-
-## Description
-
-Nadeshiko is an aspiring front-end developer who loves tinkering with everything front-end. One day, while she is casually browsing the Internet for interesting front-end things, she comes across a very simple blog, with no images, that somehow takes forever and a half to load. The curious Nadeshiko is able to reproduce the inexplicably long loading time with various browsers, but she has not learnt enough to identify the problem. Can you help Nadeshiko figure out the cause of the problem and implement a solution?
 
 ## Instructions
 
@@ -18,8 +16,11 @@ Nadeshiko is an aspiring front-end developer who loves tinkering with everything
       npm run fpeserver
     ```
 2. Open `index.html` and note/measure the Time to First Render (TTFR)
-2. Identify and describe the problem
-3. Reduce the TTFR to less than 4 seconds
+
+## Requirements
+
+* Identify and describe the problem
+* Reduce the TTFR to less than 4 seconds
 
 ## Constraints
 
