@@ -4,10 +4,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
-// Setup
 var app = express_1.default();
-// Config
 var port = process.env.PORT || 3001;
+app.get('/puzzle/:id/:resource', function (request, response) {
+    var _a = request.params, id = _a.id, resource = _a.resource;
+    var parentDir = __dirname.replace(/server$/, '');
+    var path = parentDir + "/" + id + "/server/" + resource;
+    response.sendFile(path);
+});
 // Start server
 app.listen(port, function () {
     console.log("Your app is listening on port " + port);
