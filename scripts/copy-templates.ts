@@ -86,9 +86,9 @@ if (titleNotEmpty) {
   let puzzleDir = __dirname.replace(/scripts$/, 'src/puzzles');
   let existingPuzzles = fs.readdirSync(puzzleDir).filter(function(name) {
     return name.match(/^\d\d\d-/);
-  }).length;
-  let prefix = ('00' + (existingPuzzles + 1)).slice(-3) + '-';
-  let slug = prefix + title.toLowerCase().replace(' ', '-');
+  });
+  let prefix = ('00' + (existingPuzzles.length + 1)).slice(-3) + '-';
+  let slug = prefix + sluggify(title);
 
   let dir = __dirname.replace(/scripts$/, 'src/templates');
   let promise1 = makeDirectory(slug);
@@ -112,4 +112,8 @@ if (titleNotEmpty) {
 }
 else {
   // Error handling to be implemented.
+}
+
+function sluggify(str: string) {
+  return str.toLowerCase().replace(/\s/g, '-').replace(/[^\w-]/g, '');
 }

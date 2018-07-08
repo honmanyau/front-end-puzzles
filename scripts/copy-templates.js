@@ -75,9 +75,9 @@ if (titleNotEmpty) {
     var puzzleDir = __dirname.replace(/scripts$/, 'src/puzzles');
     var existingPuzzles = fs.readdirSync(puzzleDir).filter(function (name) {
         return name.match(/^\d\d\d-/);
-    }).length;
-    var prefix = ('00' + (existingPuzzles + 1)).slice(-3) + '-';
-    var slug_1 = prefix + title.toLowerCase().replace(' ', '-');
+    });
+    var prefix = ('00' + (existingPuzzles.length + 1)).slice(-3) + '-';
+    var slug_1 = prefix + sluggify(title);
     var dir = __dirname.replace(/scripts$/, 'src/templates');
     var promise1 = makeDirectory(slug_1);
     var promise2 = getListOfFilesInDirectory(dir);
@@ -97,4 +97,7 @@ if (titleNotEmpty) {
 }
 else {
     // Error handling to be implemented.
+}
+function sluggify(str) {
+    return str.toLowerCase().replace(/\s/g, '-').replace(/[^\w-]/g, '');
 }
