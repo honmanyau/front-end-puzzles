@@ -1,0 +1,8 @@
+.app {
+  background: linear-gradient(to right, #A1FFCE, #FAFFD1);
+  /* From uiGradients: https://uigradients.com/#Limeade */
+}
+
+.cell-filled {
+  background: rgba(0, 0, 0, 0.5);
+}

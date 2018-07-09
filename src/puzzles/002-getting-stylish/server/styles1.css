@@ -1,0 +1,8 @@
+.app {
+  background: linear-gradient(to right, #D66D75, #E29587);
+  /* From uiGradients: https://uigradients.com/#Shalala */
+}
+
+.cell-filled {
+  background: rgba(255, 255, 255, 0.4);
+}
