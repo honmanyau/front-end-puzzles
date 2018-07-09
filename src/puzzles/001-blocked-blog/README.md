@@ -9,9 +9,9 @@ Nadeshiko is an aspiring front-end developer who loves tinkering with everything
     ```sh
       npm run fpeserver
     ```
-2. Open `index.html` and note/measure the Time to First Render (TTFR)
+2. Open `index.html` and note/measure the Time to First Render (TTFR) under the "Network" tab of developer tool of the browser of your choice
 
-## Requirements
+## Challenges
 
 * Make sure that resources are not cached
 * Identify and describe the problem
