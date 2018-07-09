@@ -34,6 +34,7 @@ npm run fepserver
 ## Puzzles
 
 1. [Blocked Blog](https://github.com/honmanyau/front-end-puzzles/tree/master/src/puzzles/001-blocked-blog)
+2. [Getting Stylish](https://github.com/honmanyau/front-end-puzzles/tree/master/src/puzzles/002-getting-stylish)
 
 ## Contributing
 
